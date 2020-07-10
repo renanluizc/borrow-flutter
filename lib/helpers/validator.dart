@@ -10,4 +10,16 @@ class Validator {
 
     return null;
   }
+
+  static String validateMobile(String value) {
+    String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == null) {
+          return 'Campo obrigatório';
+    }
+    else if (!regExp.hasMatch(value)) {
+      return 'Inserir número válido';
+    }
+    return null;
+  }    
 }

@@ -4,7 +4,9 @@ import 'package:borrowed_flutter/helpers/validator.dart';
 import 'package:borrowed_flutter/models/stuff.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 
 class StuffDetailPage extends StatefulWidget {
   final Stuff editedStuff;
@@ -23,6 +25,7 @@ class _StuffDetailPageState extends State<StuffDetailPage> {
   final _dateController = TextEditingController();
   final _descriptionController = TextEditingController();
   final _nameController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _dateFormat = DateFormat('dd/MM/yyyy');
 
   var _currentStuff = Stuff();
@@ -88,6 +91,7 @@ class _StuffDetailPageState extends State<StuffDetailPage> {
           _buildDateInputField(),
           _buildDescriptionInputField(),
           _buildNameInputField(),
+          _buildPhoneInputField(),
           _buildConfirmButton(),
         ],
       ),
@@ -152,6 +156,28 @@ class _StuffDetailPageState extends State<StuffDetailPage> {
       controller: _nameController,
       validator: (value) {
         return Validator.isEmptyText(value);
+      },
+    );
+  }
+
+  _buildPhoneInputField({Function(String) onSaved}) {
+    return TextFormField(
+      decoration: InputDecoration(
+        icon: Icon(Icons.person),
+        labelText: 'Telefone do contato',
+      ),
+       inputFormatters: [
+        WhitelistingTextInputFormatter.digitsOnly,
+        TelefoneInputFormatter(),
+      ],
+      onSaved: (value) {
+        setState(() {
+          _currentStuff.contactPhone = value;
+        });
+      },
+      controller: _phoneController,
+      validator: (value) {
+        return Validator.validateMobile(value);
       },
     );
   }

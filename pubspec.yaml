@@ -17,6 +17,7 @@ dependencies:
   image_picker: ^0.6.7
   path_provider: ^1.6.9
   sembast: ^2.4.4+1
+  brasil_fields: ^0.3.0
 
   flutter_localizations:
     sdk: flutter

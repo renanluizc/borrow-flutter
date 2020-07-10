@@ -8,6 +8,7 @@ class Stuff {
   String contactName;
   DateTime loanDate;
   String photoPath;
+  String contactPhone;
 
   String get date => DateFormat("dd/MM/yyyy").format(loanDate);
 
@@ -19,6 +20,7 @@ class Stuff {
     this.contactName,
     this.loanDate,
     this.photoPath,
+    this.contactPhone,
   });
 
   Stuff copyWith({
@@ -27,6 +29,7 @@ class Stuff {
     String contactName,
     DateTime loanDate,
     String photoPath,
+    String contactPhone,
   }) {
     return Stuff(
       id: id ?? this.id,
@@ -34,6 +37,7 @@ class Stuff {
       contactName: contactName ?? this.contactName,
       loanDate: loanDate ?? this.loanDate,
       photoPath: photoPath ?? this.photoPath,
+      contactPhone: contactPhone ?? this.contactPhone,
     );
   }
 
@@ -44,18 +48,20 @@ class Stuff {
       'contactName': contactName,
       'loanDate': loanDate?.millisecondsSinceEpoch,
       'photoPath': photoPath,
+      'contactPhone': contactPhone,
     };
   }
 
   static Stuff fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
-
+  
     return Stuff(
       id: map['id'],
       description: map['description'],
       contactName: map['contactName'],
       loanDate: DateTime.fromMillisecondsSinceEpoch(map['loanDate']),
       photoPath: map['photoPath'],
+      contactPhone: map['contactPhone'],
     );
   }
 
@@ -65,27 +71,29 @@ class Stuff {
 
   @override
   String toString() {
-    return 'Stuff(id: $id, description: $description, contactName: $contactName, loanDate: $loanDate, photoPath: $photoPath)';
+    return 'Stuff(id: $id, description: $description, contactName: $contactName, loanDate: $loanDate, photoPath: $photoPath, contactPhone: $contactPhone)';
   }
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
-
+  
     return o is Stuff &&
-        o.id == id &&
-        o.description == description &&
-        o.contactName == contactName &&
-        o.loanDate == loanDate &&
-        o.photoPath == photoPath;
+      o.id == id &&
+      o.description == description &&
+      o.contactName == contactName &&
+      o.loanDate == loanDate &&
+      o.photoPath == photoPath &&
+      o.contactPhone == contactPhone;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-        description.hashCode ^
-        contactName.hashCode ^
-        loanDate.hashCode ^
-        photoPath.hashCode;
+      description.hashCode ^
+      contactName.hashCode ^
+      loanDate.hashCode ^
+      photoPath.hashCode ^
+      contactPhone.hashCode;
   }
 }
