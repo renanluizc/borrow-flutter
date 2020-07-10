@@ -8,7 +8,7 @@ class StuffCard extends StatelessWidget {
   final Stuff stuff;
   final Function onEdit;
   final Function onDelete;
-  const StuffCard({
+  StuffCard({
     Key key,
     this.stuff,
     this.onEdit,
@@ -17,6 +17,27 @@ class StuffCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _buildSlidableStuffCard();
+  }
+
+  _buildStuffCard(Stuff stuff) {
+    return Card(
+      child: ListTile(
+        title: Text(stuff.description),
+        subtitle: Text(stuff.contactName),
+        leading: CircleAvatar(
+          child: stuff.photoExist
+              ? null
+              : Text('${stuff.description.toUpperCase()[0]}'),
+          backgroundImage:
+              stuff.photoExist ? FileImage(File(stuff.photoPath)) : null,
+        ),
+        trailing: Text(stuff.date),
+      ),
+    );
+  }
+
+  _buildSlidableStuffCard() {
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
@@ -35,23 +56,6 @@ class StuffCard extends StatelessWidget {
           onTap: onDelete,
         ),
       ],
-    );
-  }
-
-  _buildStuffCard(Stuff stuff) {
-    return Card(
-      child: ListTile(
-        title: Text(stuff.description),
-        subtitle: Text(stuff.contactName),
-        leading: CircleAvatar(
-          child: stuff.photoExist
-              ? null
-              : Text('${stuff.description.toUpperCase()[0]}'),
-          backgroundImage:
-              stuff.photoExist ? FileImage(File(stuff.photoPath)) : null,
-        ),
-        trailing: Text(stuff.date),
-      ),
     );
   }
 }

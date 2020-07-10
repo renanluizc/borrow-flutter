@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Emprestei?',
       theme: _buildtheme(),
       localizationsDelegates: [
-        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
