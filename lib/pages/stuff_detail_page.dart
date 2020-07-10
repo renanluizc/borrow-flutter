@@ -163,7 +163,7 @@ class _StuffDetailPageState extends State<StuffDetailPage> {
   _buildPhoneInputField({Function(String) onSaved}) {
     return TextFormField(
       decoration: InputDecoration(
-        icon: Icon(Icons.person),
+        icon: Icon(Icons.phone),
         labelText: 'Telefone do contato',
       ),
        inputFormatters: [
@@ -177,7 +177,7 @@ class _StuffDetailPageState extends State<StuffDetailPage> {
       },
       controller: _phoneController,
       validator: (value) {
-        return Validator.validateMobile(value);
+        return Validator.validatePhone(value);
       },
     );
   }
