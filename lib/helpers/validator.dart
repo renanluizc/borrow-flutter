@@ -6,6 +6,8 @@ class Validator {
   }
 
   static String isEmptyDate(DateTime dateTime) {
+    if (dateTime.isAfter(DateTime.now())) return 'Data de empréstimo inválido';
+
     if (dateTime == null) return 'Campo obrigatório';
 
     return null;
