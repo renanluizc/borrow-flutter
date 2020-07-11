@@ -38,6 +38,7 @@ class _StuffDetailPageState extends State<StuffDetailPage> {
       _dateController.text = _dateFormat.format(_currentStuff.loanDate);
       _descriptionController.text = _currentStuff.description;
       _nameController.text = _currentStuff.contactName;
+      _phoneController.text = _currentStuff.contactPhone;
     }
   }
 
