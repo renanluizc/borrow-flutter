@@ -33,11 +33,12 @@ class MyApp extends StatelessWidget {
 
   _buildtheme() {
     return ThemeData(
-      brightness: Brightness.dark,
-      primaryColor: Color(0xFF212121),
-      accentColor: Colors.deepOrange,
-      primarySwatch: Colors.deepOrange,
+      brightness: Brightness.light,
+      primaryColor: Color(0xff0c0e58),
+      accentColor: Colors.red,
+      primarySwatch: Colors.red,
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      fontFamily: 'Raleway' 
     );
   }
 }
