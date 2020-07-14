@@ -47,6 +47,7 @@ class _StuffDetailPageState extends State<StuffDetailPage> {
     _dateController.dispose();
     _descriptionController.dispose();
     _nameController.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 

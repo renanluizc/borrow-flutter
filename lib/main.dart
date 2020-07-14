@@ -1,9 +1,11 @@
 import 'package:borrowed_flutter/pages/home_page.dart';
+import 'package:borrowed_flutter/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  setupLocator();
   runApp(MyApp());
 }
 

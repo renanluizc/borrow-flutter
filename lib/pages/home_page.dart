@@ -4,8 +4,12 @@ import 'package:borrowed_flutter/components/stuff_card.dart';
 import 'package:borrowed_flutter/controllers/home_controller.dart';
 import 'package:borrowed_flutter/models/stuff.dart';
 import 'package:borrowed_flutter/pages/stuff_detail_page.dart';
+import 'package:borrowed_flutter/services/calls_service.dart';
+import 'package:borrowed_flutter/service_locator.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+
+import '../service_locator.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _controller = HomeController();
   bool _loading = true;
+  final CallsAndMessagesService _service = locator<CallsAndMessagesService>();
 
   @override
   void initState() {
@@ -67,6 +72,10 @@ class _HomePageState extends State<HomePage> {
           },
           onEdit: () {
             _editStuff(index, stuff);
+          },
+          onCall: () {
+            final String contactPhone = stuff.contactPhone;
+            if (contactPhone.isNotEmpty) _service.call(stuff.contactPhone);
           },
         );
       },
